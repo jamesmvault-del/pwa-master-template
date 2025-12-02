@@ -1,2 +1,0 @@
-This is a sample file for testing git functionality.
-Created on: December 2, 2025
