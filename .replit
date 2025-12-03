@@ -3,7 +3,7 @@ modules = ["web", "python-3.11"]
 
 [nix]
 channel = "stable-24_11"
-packages = ["static-web-server"]
+packages = ["static-web-server", "run"]
 
 [deployment]
 publicDir = "/"
@@ -26,25 +26,21 @@ Console logs are available in the Preview devtools or your browser devtools.\" &
 waitForPort = 80
 
 [[workflows.workflow]]
-name = "Project"
+name = "Serve static"
 mode = "parallel"
 author = "agent"
 
 [[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "web-server"
-
-[[workflows.workflow]]
-name = "web-server"
-author = "agent"
-
-[[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python3 server.py"
+args = "static-web-server -p 5000"
 waitForPort = 5000
 
 [workflows.workflow.metadata]
 outputType = "webview"
+
+[[ports]]
+localPort = 80
+externalPort = 3000
 
 [[ports]]
 localPort = 5000
