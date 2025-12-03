@@ -1,0 +1,273 @@
+/* ===========================
+   CSS VARIABLES - BRANDING
+   =========================== */
+:root {
+  /* Colors */
+  --color-primary: #1a1a1a;
+  --color-secondary: #ffffff;
+  --color-accent: #0066cc;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-border: #e0e0e0;
+  --color-overlay: rgba(0, 0, 0, 0.5);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --line-height-base: 1.5;
+
+  /* Header */
+  --header-height: 56px;
+  --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /* Drawer */
+  --drawer-width: 280px;
+  --drawer-transition: 300ms ease-in-out;
+}
+
+/* ===========================
+   RESET & BASE STYLES
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+}
+
+/* ===========================
+   HEADER
+   =========================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  box-shadow: var(--header-shadow);
+  z-index: 100;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 var(--spacing-md);
+  max-width: 100%;
+}
+
+.header-logo {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* ===========================
+   HAMBURGER BUTTON
+   =========================== */
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  transition: opacity 200ms ease;
+}
+
+.hamburger-btn:active {
+  opacity: 0.7;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-secondary);
+  border-radius: 1px;
+  transition: var(--drawer-transition);
+}
+
+.hamburger-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(9px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-9px);
+}
+
+/* ===========================
+   NAVIGATION DRAWER
+   =========================== */
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: var(--drawer-width);
+  height: 100vh;
+  background-color: var(--color-secondary);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  transform: translateX(var(--drawer-width));
+  transition: transform var(--drawer-transition);
+  z-index: 110;
+  overflow-y: auto;
+}
+
+.nav-drawer.open {
+  transform: translateX(0);
+}
+
+.nav-drawer-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: var(--header-height);
+  padding: 0 var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 200ms ease;
+}
+
+.close-btn:active {
+  opacity: 0.6;
+}
+
+.nav-list {
+  list-style: none;
+  padding: var(--spacing-md) 0;
+}
+
+.nav-list li {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-list a {
+  display: block;
+  padding: var(--spacing-md);
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  transition: background-color 200ms ease;
+}
+
+.nav-list a:active {
+  background-color: var(--color-border);
+}
+
+/* ===========================
+   OVERLAY
+   =========================== */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--drawer-transition), visibility var(--drawer-transition);
+  z-index: 105;
+}
+
+.nav-overlay.open {
+  background-color: var(--color-overlay);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===========================
+   MAIN CONTENT
+   =========================== */
+.main-content {
+  padding-top: var(--header-height);
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 100vh;
+}
+
+.hero {
+  padding: var(--spacing-xl) var(--spacing-md);
+  text-align: center;
+  background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-primary);
+}
+
+.hero p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  max-width: 500px;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+@media (max-width: 480px) {
+  .header-logo {
+    font-size: var(--font-size-base);
+  }
+
+  .hero h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  .hero p {
+    font-size: var(--font-size-base);
+  }
+}

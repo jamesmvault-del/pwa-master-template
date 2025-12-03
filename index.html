@@ -1,15 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium PWA Template</title>
+  <link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  Hello world
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="header-logo">tinman</div>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Navigation Drawer -->
+  <nav class="nav-drawer" id="nav-drawer">
+    <div class="nav-drawer-header">
+      <button class="close-btn" id="close-drawer-btn" aria-label="Close navigation">
+        <span>&times;</span>
+      </button>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Overlay (for closing drawer when tapped outside) -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section id="home" class="hero">
+      <h1>Welcome to Your PWA</h1>
+      <p>A premium, professional starter template.</p>
+    </section>
+  </main>
+
   <script src="script.js"></script>
 </body>
 
